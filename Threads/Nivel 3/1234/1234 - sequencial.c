@@ -5,31 +5,32 @@
 #include <conio.h>
 #include <string.h>
 
-String arrayOne[] = {   "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
+char arrayOne[][50] = {   "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
                         "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
                         "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
                         "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
                         "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge"
                      };
 void Calculo(int location){
-    frase = arrayOne[location];
+    char frase[] = "";
     int j;
     char acesso='N';
-    for(j = 0; j< frase.size(); j++)
+    for(j = 0; j  < sizeof(arrayOne[location]); j++)
     {
-        if(frase[j]>='a' and frase[j]<='z' and acesso=='N' or frase[j]>='A' and frase[j]<='Z' and acesso=='N')
+        if(arrayOne[location][j]>='a' && arrayOne[location][j]<='z' && acesso=='N' || arrayOne[location][j]>='A' && arrayOne[location][j]<='Z' && acesso=='N')
         {
             frase[j]= toupper(frase[j]);
             acesso='H';
+            printf("pvknm" + arrayOne[location][j] );
         }
-        else if(frase[j]>='a' and frase[j]<='z' and acesso=='H' or frase[j]>='A' and frase[j]<='Z' and acesso=='H')
+        else if(arrayOne[location][j]>='a' && arrayOne[location][j]<='z' && acesso=='H' || arrayOne[location][j]>='A' && arrayOne[location][j]<='Z' && acesso=='H')
         {
             frase[j]= tolower(frase[j]);
             acesso='N';
         }
     }
     acesso='N';
-    printf("\nFrase [%d] = " + frase , location);
+    printf("\nFrase [] = %s\n", frase);
     Sleep(1000);
 }
 int main()
