@@ -5,14 +5,15 @@
 #include <conio.h>
 #include <string.h>
 
-char arrayOne[][50] = {   "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
-                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
-                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
-                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge",
-                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avançada","Amalia","Ciência da Computação","Threads","Uri Online Judge"
+char arrayOne[][50] = {   "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge"
                      };
-void Calculo(int location){
-    char frase[] = "";
+void setencaDancante(int location){
+    char* frase;
+    frase = arrayOne[location];
     int j;
     char acesso='N';
     for(j = 0; j  < sizeof(arrayOne[location]); j++)
@@ -21,7 +22,6 @@ void Calculo(int location){
         {
             frase[j]= toupper(frase[j]);
             acesso='H';
-            printf("pvknm" + arrayOne[location][j] );
         }
         else if(arrayOne[location][j]>='a' && arrayOne[location][j]<='z' && acesso=='H' || arrayOne[location][j]>='A' && arrayOne[location][j]<='Z' && acesso=='H')
         {
@@ -30,7 +30,7 @@ void Calculo(int location){
         }
     }
     acesso='N';
-    printf("\nFrase [] = %s\n", frase);
+    printf("Frase [%d] = %s\n", location, frase);
     Sleep(1000);
 }
 int main()

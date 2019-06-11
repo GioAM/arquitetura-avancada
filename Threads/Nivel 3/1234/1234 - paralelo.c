@@ -7,26 +7,32 @@
 
 int endThreads, endThreadsBLOCKED;
 int porThread;
-int arrayOne[] = {      4,6,5,7,8,9,10,12,5,7,
-                        4,6,5,7,8,9,10,12,5,7,
-                        4,6,5,7,8,9,10,12,5,7,
-                        4,6,5,7,8,9,10,12,5,7,
-                        4,6,5,7,8,9,10,12,5,7
+char arrayOne[][50] = {   "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge",
+                        "Frase legal", "Frase Dois", "FRASE TRES","TESTE 123 TESTE","EXERCICIOS", "arquitetura avancada","Amalia","Ciencia da Computacao","Threads","Uri Online Judge"
                      };
-
-int arrayTwo[] = {      6,9,8,6,2,1,12,3,2,9,
-                        6,9,8,6,2,1,12,3,2,9,
-                        6,9,8,6,2,1,12,3,2,9,
-                        6,9,8,6,2,1,12,3,2,9,
-                        6,9,8,6,2,1,12,3,2,9,
-                     };
-
-void Calculo(int location){
-    unsigned long long int valor1,valor2,soma;
-    valor1 = arrayOne[location];
-    valor2 = arrayTwo[location];
-    soma = valor1^valor2;
-    printf("\nSoma [%d] = %d",location,soma);
+void setencaDancante(int location){
+    char* frase;
+    frase = arrayOne[location];
+    int j;
+    char acesso='N';
+    for(j = 0; j  < sizeof(arrayOne[location]); j++)
+    {
+        if(arrayOne[location][j]>='a' && arrayOne[location][j]<='z' && acesso=='N' || arrayOne[location][j]>='A' && arrayOne[location][j]<='Z' && acesso=='N')
+        {
+            frase[j]= toupper(frase[j]);
+            acesso='H';
+        }
+        else if(arrayOne[location][j]>='a' && arrayOne[location][j]<='z' && acesso=='H' || arrayOne[location][j]>='A' && arrayOne[location][j]<='Z' && acesso=='H')
+        {
+            frase[j]= tolower(frase[j]);
+            acesso='N';
+        }
+    }
+    acesso='N';
+    printf("Frase [%d] = %s\n", location, frase);
     Sleep(1000);
 }
 void *Thread(void *id){
@@ -37,7 +43,7 @@ void *Thread(void *id){
     int i;
     threadID == NUM_THREADS-1 ? fim = fim + (50 % NUM_THREADS) : NULL;
     for(i = comeco; i < fim; i++){
-        Calculo(i);
+        setencaDancante(i);
     }
     while(endThreadsBLOCKED);
     endThreadsBLOCKED = 1;
